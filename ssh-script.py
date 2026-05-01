@@ -18,9 +18,10 @@ while True:
 
     for line in lines:
         if(line.startswith("Host ")):
-            host = line.split(' ')[1]
+            host = line.split(' ')[1].strip()
             hosts.append(host)
             print("    {0}. {1}".format(index, host))
+            index += 1
 
     selection = input("Enter a selection digit (blank to exit): ")
 
