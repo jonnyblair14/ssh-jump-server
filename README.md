@@ -1,9 +1,14 @@
 # ssh-jump-server
 Dynamically populated menu for ssh connections.
 
-`ssh-script.sh` dynamically creates a list of ssh endpoints for connection based on the contents of `$HOME/.ssh/config`.
+`ssh-script.sh` or `ssh-script.py` dynamically creates a list of ssh endpoints for connection based on the contents of `$HOME/.ssh/config`.
 
 Populate `$HOME/.ssh/config` with your hosts.
+
+The python version also will loop and give you the menu when you exit one ssh session.
+
+## ToDo
+-Implement loop for bash version.
 
 ## Assumptions
 This project assumes that your `~/.ssh/config` file contains the following information at a minimum:
