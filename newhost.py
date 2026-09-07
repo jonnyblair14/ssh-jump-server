@@ -2,7 +2,7 @@ import argparse
 from pathlib import Path
 
 # configPath = "./testfiles/test.txt" # for test purposes
-configPath = "% s/.ssh/config" % Path.home()
+configPath = "{0}/.ssh/config".format(Path.home())
 configFile = open(configPath, "a")
 
 
