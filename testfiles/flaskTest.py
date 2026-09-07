@@ -4,16 +4,34 @@ from markupsafe import Markup, escape
 app = Flask(__name__)
 
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello World!</p>"
+@app.route("/hosts")
+def hosts():
+    return """
+        <html>
+            <body>
+                <h1>list existing hosts</h1>
+            </body>
+        </html>
+        """
 
 
-@app.route("/list")
-def hello():
-    return "<p>list existing hosts</p>"
-
-
-@app.route("/new-host")
+@app.route("/hosts/add")
 def newhost():
-    return "<h1>Add a new ssh host</h1>"
+    return """
+        <html>
+            <body>
+                <h1>Add a new ssh host</h1>
+            </body>
+        </html>
+        """
+
+
+@app.route("/keys")
+def keys():
+    return """
+        <html>
+            <body>
+                <h1>manage keys here</h1>
+            </body>
+        </html>
+        """
