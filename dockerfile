@@ -27,17 +27,17 @@ RUN chown -R sshuser:sshuser /home/sshuser
 RUN mkdir -p /opt/jumpserver/venv
 
 RUN python3 -m venv /opt/jumpserver/venv/.venv
-RUN . /opt/jumpserver/venv/.venv/bin/activate
-RUN python3 -m pip install flask
+RUN /opt/jumpserver/venv/.venv/bin/pip install flask
 
 RUN mkdir -p /opt/jumpserver/menu
 COPY ./ssh-script.py /opt/jumpserver/menu/jumpserver.py
 
 COPY ./newhost.py /opt/jumpserver/menu/newhost.py
+COPY ./query.py /opt/jumpserver/menu/query.py
 
 RUN mkdir -p /opt/jumpserver/web/static \
 	&& mkdir -p /opt/jumpserver/web/templates
-COPY ./flaskTest.py /opt/jumpserver/web/static/flaskTest.py
+COPY ./flaskTest.py /opt/jumpserver/web/flaskTest.py
 
 EXPOSE 22
 
