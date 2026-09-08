@@ -1,4 +1,4 @@
-import newhost
+import hostops
 from flask import Flask, redirect, render_template, request, url_for
 from markupsafe import Markup, escape
 
@@ -19,7 +19,7 @@ def newhostpage():
         port = request.form["port"]
         idFile = request.form["identityFile"]
 
-        newhost.newhost(
+        hostops.newhost(
             hostname=hostname, name=name, user=username, port=port, idFile=idFile
         )
         return redirect(url_for("hosts"))
