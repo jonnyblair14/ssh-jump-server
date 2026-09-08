@@ -18,10 +18,9 @@ RUN echo 'sshuser:password' | chpasswd
 RUN useradd -rm --create-home --shell /bin/bash --groups sudo test
 RUN echo 'test:test' | chpasswd
 
-RUN mkdir -p /run/sshd 
-	#&& mkdir -p /home/sshuser/.ssh 
-	#&& touch /home/sshuser/.ssh/config
-COPY ./testfiles/ /home/sshuser
+RUN mkdir -p /run/sshd \
+	&& mkdir -p /home/sshuser/.ssh \
+	&& touch /home/sshuser/.ssh/config
 
 RUN chown -R sshuser:sshuser /home/sshuser
 RUN mkdir -p /opt/jumpserver/venv
@@ -32,14 +31,10 @@ RUN /opt/jumpserver/venv/.venv/bin/pip install flask
 RUN mkdir -p /opt/jumpserver/menu
 COPY ./ssh-script.py /opt/jumpserver/menu/jumpserver.py
 
-COPY ./newhost.py /opt/jumpserver/menu/newhost.py
-COPY ./query.py /opt/jumpserver/menu/query.py
-
-RUN mkdir -p /opt/jumpserver/web/static \
-	&& mkdir -p /opt/jumpserver/web/templates
-COPY ./flaskTest.py /opt/jumpserver/web/flaskTest.py
+COPY ./resources/web/ /opt/jumpserver/web/
 
 EXPOSE 22
+EXPOSE 5000
 
 CMD ["/usr/sbin/sshd", "-D"]
 
