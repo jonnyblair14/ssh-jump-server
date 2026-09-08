@@ -1,8 +1,10 @@
 import json
 from pathlib import Path
 
+# TODO: Swap to dictionary method/create alternative method?
 
-def main():
+
+def config_to_json():
     configPath = "{0}/.ssh/config".format(Path.home())
     json_str = ""
     first = True
@@ -34,6 +36,3 @@ def main():
 
     jsonFile = open("query.json", "w")
     jsonFile.write(json_str)
-
-
-main()
